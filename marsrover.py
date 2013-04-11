@@ -3,12 +3,11 @@ class Rover():
 
     def __init__(self, position, direction):
         self.position = position
-        self.direction = direction
+        self.direction = Direction.for_direction(direction)
 
     def move(self, commands=()):
         for cmd in commands:
-            direction = SouthDirection()
-            self.position = direction.move(self.position, cmd)
+            self.position = self.direction.move(self.position, cmd)
 
     def get_position(self):
         return self.position.get_position()
@@ -27,6 +26,13 @@ class Position():
 
     def get_position(self):
         return (self.xpos, self.ypos)
+
+class Direction():
+
+    @staticmethod
+    def for_direction(direction_str):
+        if direction_str == "south":
+            return SouthDirection()
 
 class SouthDirection():
 
