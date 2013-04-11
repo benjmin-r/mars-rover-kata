@@ -7,10 +7,8 @@ class Rover():
 
     def move(self, commands=()):
         for cmd in commands:
-            if cmd == 'f' and self.direction == 'south':
-                self.position = self.position.down()
-            if cmd == 'b' and self.direction == 'south':
-                self.position = self.position.up()
+            direction = SouthDirection()
+            self.position = direction.move(self.position, cmd)
 
     def get_position(self):
         return self.position.get_position()
@@ -29,3 +27,12 @@ class Position():
 
     def get_position(self):
         return (self.xpos, self.ypos)
+
+class SouthDirection():
+
+    def move(self, position, command):
+        if command == 'f':
+            return position.down()
+        if command == 'b':
+            return position.up()
+
