@@ -3,7 +3,7 @@ class Rover():
 
     def __init__(self, position, direction):
         self.position = position
-        self.direction = Direction.for_direction(direction)
+        self.direction = direction
 
     def move(self, commands=()):
         for cmd in commands:
