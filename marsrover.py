@@ -1,8 +1,11 @@
 
+INFINITE_GRID = "INFINITE_GRID"
+
 class Rover():
 
     def __init__(self, position, direction, grid_size=(-1, -1)):
         self.position = position
+        self.position.set_grid_size(grid_size)
         self.direction = direction
 
     def move(self, commands):
@@ -24,6 +27,9 @@ class Position():
     def __init__(self, pos_x, pos_y):
         self.pos_x = pos_x
         self.pos_y = pos_y
+
+    def set_grid_size(self, grid_size):
+        self.grid_size = INFINITE_GRID if grid_size == (-1, -1) else grid_size
 
     def __repr__(self):
         return "<Position x=%s, y=%s>" % (self.pos_x, self.pos_y)
@@ -50,7 +56,12 @@ class Position():
         self.pos_y -= 1
 
     def right(self):
-        self.pos_y += 1
+        if self.grid_size == INFINITE_GRID:
+            self.pos_y += 1
+        elif self.pos_y+1 > self.grid_size[1]:
+            self.pos_y = 0-self.grid_size[1]
+        else:
+            self.pos_y += 1
 
 class NorthDirection():
 

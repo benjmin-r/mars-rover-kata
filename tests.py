@@ -57,6 +57,11 @@ class RoverTest(unittest.TestCase):
         rover.move(('f', 'f'))
         self.assertEquals(Position(10, 8), rover.get_position())
 
+    def test_move_east_on_finite_grid_with_wrapping(self):
+        rover = Rover(Position(10, 10), Direction.E, (10, 10))
+        rover.move(('f', 'f', 'f'))
+        self.assertEquals(Position(10, -8), rover.get_position())
+
 
 if __name__ == '__main__':
     unittest.main()
