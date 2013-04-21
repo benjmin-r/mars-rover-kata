@@ -41,6 +41,12 @@ class RoverTest(unittest.TestCase):
                 ('f', 'b', 'b', 'l', 'f', 'f'),
                 Position(1, 2))
 
+    def test_move_east_and_turn_left_twice(self):
+        self._move_and_test_rover(Position(0,0),
+                Direction.E,
+                ('f', 'b', 'l', 'l', 'f', 'f'),
+                Position(0, -2))
+
     def _move_and_test_rover(self, position, direction, movement, expected_position):
         rover = Rover(position, direction)
         rover.move(movement)
