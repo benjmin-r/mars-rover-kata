@@ -7,13 +7,9 @@ class Rover():
 
     def move(self, commands):
         for cmd in commands:
-            if cmd == 'f' and self.direction == Direction.S:
+            if cmd == 'f':
                 self.direction.forward(self.position)
-            elif cmd == 'b' and self.direction == Direction.S:
-                self.direction.backward(self.position)
-            elif cmd == 'f' and self.direction == Direction.N:
-                self.direction.forward(self.position)
-            elif cmd == 'b' and self.direction == Direction.N:
+            elif cmd == 'b':
                 self.direction.backward(self.position)
 
     def get_position(self):
