@@ -48,7 +48,10 @@ class Position():
             return True
 
     def down(self):
-        self.pos_x -= 1
+        if self.is_finite_grid() and self.pos_x-1 < self.grid_size[0] * -1:
+            self.pos_x = self.grid_size[0]
+        else:
+            self.pos_x -= 1
 
     def up(self):
         if self.is_finite_grid() and self.pos_x+1 > self.grid_size[0]:

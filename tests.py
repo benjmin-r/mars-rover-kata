@@ -72,5 +72,10 @@ class RoverTest(unittest.TestCase):
         rover.move(('f', 'f', 'f', 'f'))
         self.assertEquals(Position(-17, 0), rover.get_position())
 
+    def test_wrapping_lower_edge(self):
+        rover = Rover(Position(-19, 0), Direction.N, (20, 30))
+        rover.move(('b', 'b', 'b', 'b'))
+        self.assertEquals(Position(18, 0), rover.get_position())
+
 if __name__ == '__main__':
     unittest.main()
