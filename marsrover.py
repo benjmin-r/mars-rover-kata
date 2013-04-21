@@ -12,9 +12,9 @@ class Rover():
             elif cmd == 'b' and self.direction == Direction.S:
                 self.direction.backward(self.position)
             elif cmd == 'f' and self.direction == Direction.N:
-                self.position.up()
+                self.direction.forward(self.position)
             elif cmd == 'b' and self.direction == Direction.N:
-                self.position.down()
+                self.direction.backward(self.position)
 
     def get_position(self):
         return self.position
@@ -46,6 +46,15 @@ class Position():
     def up(self):
         self.pos_x += 1
 
+class NorthDirection():
+
+    def forward(self, position):
+        return position.up()
+
+    def backward(self, position):
+        return position.down()
+
+
 class SouthDirection():
 
     def forward(self, position):
@@ -56,5 +65,5 @@ class SouthDirection():
 
 class Direction():
     S = SouthDirection()
-    N = 'north'
+    N = NorthDirection()
 
