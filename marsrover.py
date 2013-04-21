@@ -1,7 +1,7 @@
 
 class Rover():
 
-    def __init__(self, position, direction):
+    def __init__(self, position, direction, grid_size=(-1, -1)):
         self.position = position
         self.direction = direction
 
